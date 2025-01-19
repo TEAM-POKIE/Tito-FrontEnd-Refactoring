@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tito_app/core/provider/nav_provider.dart';
 import 'package:tito_app/src/screen/login/login_main.dart';
+import 'package:tito_app/core/utils/secure_storage.dart';
 
 class LogoutPopup extends ConsumerWidget {
   // ConsumerWidget으로 변경
@@ -16,8 +17,7 @@ class LogoutPopup extends ConsumerWidget {
     // ref 추가
     void putLogOut() async {
       await ApiService(DioClient.dio).postLogOut();
-      await secureStorage.delete(key: 'API_ACCESS_TOKEN');
-      await secureStorage.delete(key: 'API_REFRESH_TOKEN');
+      await SecureStorageUtils.deleteAllTokens();
       final notifier = ref.read(selectedIndexProvider.notifier);
       notifier.state = 0;
       context.go('/login');

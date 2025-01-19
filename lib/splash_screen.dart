@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tito_app/core/constants/style.dart';
 import 'package:tito_app/core/routes/routes.dart';
+import 'package:tito_app/core/utils/secure_storage.dart';
 
 import 'package:tito_app/src/screen/login/login_main.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,18 +22,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     requestPermissions();
-
-    Timer(Duration(seconds: 3), () async {
-      await checkAccessTokenAndNavigate();
-    });
+    _checkToken();
   }
 
   Future<void> requestPermissions() async {
     await [Permission.camera, Permission.photos].request();
   }
 
-  Future<void> checkAccessTokenAndNavigate() async {
-    final token = await secureStorage.read(key: 'API_ACCESS_TOKEN');
+  Future<void> _checkToken() async {
+    final token = await SecureStorageUtils.getAccessToken();
 
     refreshNotifier.value = !refreshNotifier.value;
 

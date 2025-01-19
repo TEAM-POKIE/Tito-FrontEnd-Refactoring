@@ -6,7 +6,7 @@ import 'package:tito_app/core/api/dio_client.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tito_app/core/constants/style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class Signup extends StatefulWidget {
