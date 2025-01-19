@@ -12,21 +12,41 @@ import 'package:go_router/go_router.dart';
 
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
-final basicLoginViewModelProvider = Provider((ref) => BasicLoginViewModel(ref));
+final basicLoginViewModelProvider =
+    ChangeNotifierProvider((ref) => BasicLoginViewModel(ref));
 
-class BasicLoginViewModel {
+class BasicLoginViewModel extends ChangeNotifier {
   final Ref _ref;
   String _email = '';
   String _password = '';
+  bool _obscureText = true;
+
+  bool get obscureText => _obscureText;
 
   BasicLoginViewModel(this._ref);
 
   void setEmail(String email) {
     _email = email;
+    notifyListeners();
   }
 
   void setPassword(String password) {
     _password = password;
+    notifyListeners();
+  }
+
+  void togglePasswordVisibility() {
+    _obscureText = !_obscureText;
+    notifyListeners();
+  }
+
+  Future<void> validateAndLogin(
+      BuildContext context, GlobalKey<FormState> formKey) async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+    formKey.currentState!.save();
+    await onLogin(context);
   }
 
   Future<void> onLogin(BuildContext context) async {

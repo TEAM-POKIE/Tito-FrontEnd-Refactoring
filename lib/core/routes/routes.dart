@@ -20,7 +20,7 @@ import 'package:tito_app/src/view/myPage/my_rule.dart';
 import 'package:tito_app/src/widgets/ai/ai_create.dart';
 import 'package:tito_app/src/screen/login/basic_login.dart';
 import 'package:tito_app/src/screen/login/login_main.dart';
-import 'package:tito_app/src/screen/login/signup.dart';
+import 'package:tito_app/src/screen/signUp/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:tito_app/src/widgets/ai/ai_select.dart';
 import 'package:tito_app/src/widgets/reuse/bottombar.dart';
