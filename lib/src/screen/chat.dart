@@ -1,17 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tito_app/core/api/api_service.dart';
-import 'package:tito_app/core/api/dio_client.dart';
 import 'package:tito_app/core/constants/style.dart';
 import 'package:tito_app/core/provider/chat_view_provider.dart';
 import 'package:tito_app/core/provider/live_provider.dart';
 import 'package:tito_app/core/provider/live_webSocket_provider.dart';
 import 'package:tito_app/core/provider/login_provider.dart';
-import 'package:tito_app/core/provider/voting_provider.dart';
 import 'package:tito_app/core/provider/websocket_provider.dart';
 import 'package:tito_app/src/view/chatView/chat_appBar.dart';
 import 'package:tito_app/src/view/chatView/chat_body.dart';
@@ -21,7 +17,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tito_app/src/view/chatView/chat_bottom_detail.dart';
 import 'package:tito_app/src/view/chatView/chat_llm.dart';
-import 'package:tito_app/src/view/chatView/chat_speech_bubble.dart';
 
 class Chat extends ConsumerStatefulWidget {
   final int id;

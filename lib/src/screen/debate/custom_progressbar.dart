@@ -60,11 +60,10 @@ class _ProgressBarPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.fill;
 
-    // 배경 바 그리기
+
     canvas.drawRect(
         Rect.fromLTWH(0, 0, size.width, size.height), backgroundPaint);
 
-    // 진행 바 그리기 (startOffset부터 시작)
     final double progressWidth = (size.width - startOffset) * percent;
     canvas.drawRect(Rect.fromLTWH(startOffset, 0, progressWidth, size.height),
         progressPaint);
